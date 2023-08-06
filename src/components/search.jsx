@@ -70,7 +70,7 @@ function Search() {
 
   return (
     <div className='w-full   flex flex-col justify-center items-center py-5 '>
-    <div className='absolute top-0 left-0 w-full bg-cover  min-h-full  -z-50 backdrop-blur-sm brightness-90 bg-gradient-to-t from-white/200 '  style={{backgroundImage:'url("https://images.pexels.com/photos/3279196/pexels-photo-3279196.jpeg")' ,backgroundSize:'cover'}}></div>
+    <div className='absolute top-0 left-0 w-full bg-cover  min-h-full  -z-50 backdrop-blur-sm brightness-90 bg-gradient-to-t from-white/200 '  style={{backgroundImage:'url("https://images.pexels.com/photos/3376799/pexels-photo-3376799.jpeg")' ,backgroundSize:'cover'}}></div>
     <div className='absolute top-0 left-0 w-full bg-cover  min-h-full  -z-40 bg-gradient-to-t from-white '></div>
       <div className='w-full flex flex-col justify-center items-center container mx-auto  mt-20  px-5 py-2'>
         <div className='w-full flex'>

@@ -15,26 +15,47 @@ function Login() {
   const [email,setEmail] = useState()
   const [password,setPassword] = useState()
   const [error,setError] = useState('')
+  const [code,setCode] = useState('')
+  const urlParams = new URLSearchParams(window.location.search);
   const {loginCardinalty,setloading} = useContext(AuthContext)
+
+  useEffect(()=>{
+    if(urlParams.get('code')) setCode(urlParams.get('code'))
+  },[])
 
   const HandleLogin = async(e)=>{
     e.preventDefault();
     setloading(true)
+    setError('')
     try {
       const res = await axios.post(process.env.REACT_APP_API_URL + '/login',{email,password})
       loginCardinalty(res.data.token,res.data.user)
     } catch (error) {
-      if(error.response && error.response.data && error.response.data.message) setError(error.response.data.message)
-      console.log(error)
-      // else alert("Internet !!!!")
-      setError("Verifier connexion internet")
+      if(error.response && error.response.data && error.response.data.message)  setError(error.response.data.message)
+      else setError("Verifier connexion internet")
     }
     setloading(false)
   }
+
+  const hanlde_Change = async()=>{
+      setloading(true)
+      setError('')
+      try {
+          const res = await axios.post(process.env.REACT_APP_API_URL + '/oauth/google',{code})
+          loginCardinalty(res.data.token,res.data.user)
+      } catch (error) {
+          if(error.response && error.response.data && error.response.data.message) setError(error.response.data.message)
+          else setError("Verifier connexion internet")
+      }
+      setloading(false)
+  }
+  useEffect(()=>{
+        if (code) hanlde_Change()
+    },[code])
   return (
     <div className='dynamic-min-h md:flex'>
       <form className="p-6  md:w-1/2 space-y-4 flex flex-col place-content-center md:pt-0 pt-20" onSubmit={HandleLogin}>
-          <ButtonGoogle setError={setError} />
+          <ButtonGoogle setCode={setCode}/>
         <div className='text-center ort relative'>
           Ou
         </div>
