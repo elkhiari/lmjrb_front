@@ -7,16 +7,11 @@ import { Link } from 'react-router-dom'
 function UserDropd({user,logout}) {
     const [isDroped,setIsDroped] = useState(false)
 
-    // useEffect(()=>{
-    //     document.addEventListener("click",()=>{
-    //         setIsDroped(false)
-    //     })
-    // },[])
   return (
     <div className='relative'>          
         <button onClick={()=>setIsDroped(!isDroped)} className="flex text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" type="button">
             <span className="sr-only">Open user menu</span>
-            <img className="w-8 h-8 rounded-full object-cover" src={process.env.REACT_APP_API_URL + user.profile} alt="user photo" />
+            <img className="w-8 h-8 rounded-full object-cover" src={user.google ?  user.profile : process.env.REACT_APP_API_URL + user.profile} alt="user photo" />
         </button>
 
 

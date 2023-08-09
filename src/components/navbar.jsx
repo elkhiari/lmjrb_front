@@ -9,6 +9,7 @@ import UserDropd from './userDropd';
 
 
 
+
 function Navbar() {
   const {user,token,logout} = useContext(AuthContext)
   const [scrolled, setScrolled] = useState(false);
@@ -35,7 +36,7 @@ function Navbar() {
             </span>
           </Link>
           <div>
-            {user ? <UserDropd user={user} logout={logout}/> : !token && <Link to={'/login'} className=' p-2 rounded bg-[#51989b]  backdrop-blur-sm text-white hover:scale-105 duration-150 po flex'>
+            {user ? <UserDropd user={user} logout={logout}/> : !token && window.location.pathname != '/login' && window.location.pathname != '/register' && <Link to={'/login'} className=' p-2 rounded bg-[#51989b]  backdrop-blur-sm text-white hover:scale-105 duration-150 po flex'>
               <BiSolidLogInCircle className='text-2xl ' />
             </Link>}
           </div>
