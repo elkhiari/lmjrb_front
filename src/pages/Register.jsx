@@ -89,14 +89,14 @@ function Register() {
   return (
     <div className='dynamic-min-h md:flex'>
       <form className="p-6  md:w-1/2 space-y-4 flex flex-col place-content-center md:pt-0 pt-20" onSubmit={HandleRegister}>
-          <ButtonGoogle setCode={setCode} usingFor={"register"} Title={"inscrivez-vous"}/>
+          <ButtonGoogle setCode={setCode} usingFor={"register"} Title={"Inscrivez-vous"}/>
         <div className='text-center ort relative'>
           Ou
         </div>
         <div className='mb-4 w-full flex place-content-center'>
           <label htmlFor="file" className=''>
             <img src={avatar} className='w-20 mx-auto object-cover h-20 shadow hover:shadow-lg mb-2 p-[1px] hover:scale-105 duration-150 ease-in-out cursor-pointer rounded' alt='' />
-            <p className='text-center text-sm text-gray-500'>Choose your photo</p>
+            <p className='text-center text-sm text-gray-500'>Choisissez votre profil</p>
           </label>
           <input type='file'  name='file' id='file' onChange={(e)=>setFile(e.target.files[0])} className='hidden'/>
         </div>
@@ -112,10 +112,10 @@ function Register() {
           Vous avez déjà un compte ?
         </Link>
         {error && <Alert error={error} setError={setError} />}
-        <Button OnCLick={HandleRegister} Title={"inscrivez-vous"} />
+        <Button OnCLick={HandleRegister} Title={"Inscrivez-vous"} />
       </form>
       <div className="img hidden md:w-1/2  md:flex flex-col place-items-center place-content-center">
-        <img src={require('../assets/media/cr1.png')} className='w-2/3' />
+        <img src={require('../assets/media/cr0.png')} className='w-2/3' />
       </div>
     </div>
   )

@@ -61,11 +61,14 @@ function Login() {
         </div>
         <Input placeholder={'Email'} type="email" setFieald={setEmail}/>
         <Input placeholder={'Mote de passe'} type="password" setFieald={setPassword}/>
-        <Link to={"/rest-password"} className='font-medium text-blue-600 ' >
-          Mote de passe oublié ?, <Link to={"/register"} className='text-sm text-black underline hover:font-bold duration-150' >
-          Je n'ai pas de compte ?
-        </Link>
-        </Link>
+        <div className='inline-block'>
+          <Link to={"/rest-password"} className='font-medium text-blue-600 bg-red' >
+            Mote de passe oublié ?
+          </Link> 
+          <Link to={"/register"} className='text-sm text-black underline hover:font-bold duration-150' >
+            Je n'ai pas de compte ?
+          </Link>
+        </div>
         
         {error && <Alert error={error} setError={setError} />}
         <Button OnCLick={HandleLogin} Title={"Connectez-vous"}/>
