@@ -72,7 +72,7 @@ function Search() {
     <div className='w-full   flex flex-col justify-center items-center py-5 '>
     {/* <div className='absolute top-0 left-0 w-full bg-cover  min-h-full  -z-50 backdrop-blur-sm brightness-90 bg-gradient-to-t from-white/200 '  style={{backgroundImage:'url("https://images.pexels.com/photos/3376799/pexels-photo-3376799.jpeg")' ,backgroundSize:'cover'}}></div>
     <div className='absolute top-0 left-0 w-full bg-cover  min-h-full  -z-40 bg-gradient-to-t from-white '></div> */}
-      <div className='w-full flex flex-col justify-center items-center container mx-auto  mt-20  px-5 py-2'>
+      <div className='w-full flex flex-col justify-center items-center container  mx-auto  mt-20  px-5 py-2'>
         <div className='w-full flex'>
           <span className='text-2xl md:text-4xl text-center md:text-left font-extrabold'>
             <span className="text-[#20B37C]">{firstthreewords}</span> {restofwords}
@@ -81,7 +81,7 @@ function Search() {
           </div>
         </div>
         <div className='w-full flex container mt-10 relative'>
-          <div className='absolute top-10 left-1/4 h-14 w-1/2 bg-green-600 shadow-lg -z-50'></div>
+          <div className='absolute top-10 left-1/4 h-14 w-1/2 bg-[#20B37C] shadow-lg -z-50'></div>
           <div className='bg-white/40 backdrop-blur-sm shadow-md  w-full min-h-[200px] rounded-md px-6 py-6 place-content-center mx-auto flex flex-col relative'>
               <h1 className='mb-4 text-xl  font-extrabold text-gray-900 dark:text-white '>
                 Accéder à des services <span className='text-[#20B37C]'> médicaux experts</span>

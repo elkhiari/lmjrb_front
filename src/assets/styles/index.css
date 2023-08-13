@@ -75,3 +75,16 @@ body{
   right: 0;
   /* transform: translateX(100%); */
 }
+
+@keyframes slide {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(5px);
+      }
+    }
+
+    .animate-slide {
+      animation: slide 300ms infinite alternate;
+    }

@@ -53,14 +53,17 @@ function Login() {
         if (code) hanlde_Change()
     },[code])
   return (
-    <div className='dynamic-min-h md:flex'>
-      <form className="p-6  md:w-1/2 space-y-4 flex flex-col place-content-center md:pt-0 pt-20" onSubmit={HandleLogin}>
-          <ButtonGoogle setCode={setCode} usingFor={"login"} Title={"Connectez-vous"}/>
+    <div className='w-full'>
+      <div className='relative'>
+        {/* <div className='h-32 -top-24 w-full absolute bg-green-600' ></div> */}
+      <form className=" mx-auto  shadow-green  space-y-4 container  bg-white backdrop-blur-sm flex flex-col place-content-center w-full max-w-lg rounded-xl p-6 shadow-[0_40px_80px_rgba(255,59,48,0.1)] md:p-12" onSubmit={HandleLogin}>
+        <h1 className='text-2xl font-black md:text-3xl text-center'>Se connecter à <span className='text-[#20B37C]'>Lmjrb</span></h1>
+        <ButtonGoogle setCode={setCode} usingFor={"login"} Title={"Connectez-vous"}/>
         <div className='text-center ort relative '>
           Ou
         </div>
-        <Input placeholder={'Email'} type="email" setFieald={setEmail}/>
-        <Input placeholder={'Mote de passe'} type="password" setFieald={setPassword}/>
+        <Input placeholder={'Othmane@domain.com'} text={'Email'} type="email" setFieald={setEmail}/>
+        <Input placeholder={'•••••••••••'} text={'Mote de passe'} type="password" setFieald={setPassword}/>
         <div className='inline-block'>
           <Link to={"/rest-password"} className='font-medium text-blue-600 bg-red' >
             Mote de passe oublié ?
@@ -73,8 +76,6 @@ function Login() {
         {error && <Alert error={error} setError={setError} />}
         <Button OnCLick={HandleLogin} Title={"Connectez-vous"}/>
       </form>
-      <div className="img hidden md:w-1/2  md:flex flex-col place-items-center place-content-center">
-        <img src={require('../assets/media/cr1.png')} className='w-2/3' />
       </div>
     </div>
   )
