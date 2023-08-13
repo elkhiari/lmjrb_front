@@ -23,13 +23,9 @@ function Register() {
   const [avatar, setAvatar] = useState("https://raw.githubusercontent.com/elkhiari/feeds_app_front/main/src/user.png")
   const urlParams = new URLSearchParams(window.location.search);
   const {loginCardinalty,setloading} = useContext(AuthContext)
-  const [fieldErrors, setFieldErrors] = useState({
-    email: "",
-    nom: "",
-    prenom: "",
-    password: "",
-    Cpassword: "",
-  });
+  const [isError, setIsError] = useState(false);
+
+ 
 
   useEffect(() => {
     if(file){
@@ -49,23 +45,15 @@ function Register() {
 
   const HandleRegister = async(e)=>{
     e.preventDefault();
-    setFieldErrors({
-      email: "",
-      nom: "",
-      prenom: "",
-      password: "",
-      Cpassword: "",
-    });
     setError('')
-    if (!email || !password || !Cpassword || !nom || !prenom) return setFieldErrors({ email: "Veuillez remplir tous les champs", nom: "Veuillez remplir tous les champs", prenom: "Veuillez remplir tous les champs", password: "Veuillez remplir tous les champs", Cpassword: "Veuillez remplir tous les champs" })
-    if(!/^[a-zA-Z]{3,}/.test(nom)) setFieldErrors({ nom: "Veuillez entrer un nom valide contenant au moins trois lettres alphabétiques"});
-    if(!/^[a-zA-Z]{3,}/.test(prenom)) setFieldErrors((prevField)=>({...prevField,prenom: "Veuillez entrer un prenom valide contenant au moins trois lettres alphabétiques"}))
-    if(!/\S+@\S+\.\S+/.test(email)) setFieldErrors((prevField)=>({...prevField,email: "Veuillez entrer un email valide"}))
-    if(!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(password)) setFieldErrors((prevField)=>({...prevField,password: "Le mot de passe doit contenir au moins 8 caractères, une lettre majuscule, une lettre minuscule et un chiffre"}))
-    if (password != Cpassword) setFieldErrors((prevField)=>({...prevField,Cpassword:"Les mots de passe ne correspondent pas"}))
-    if (fieldErrors.email || fieldErrors.nom || fieldErrors.prenom || fieldErrors.password || fieldErrors.Cpassword) return
-    setloading(true)
-    setError('')
+    setIsError(false)
+    if (!password || !Cpassword || !email || !nom || !prenom) return setError("Veuillez remplir tous les champs")
+    if (!/^[a-zA-Z]{3,}/.test(nom)) return setIsError(true)
+    if (!/^[a-zA-Z]{3,}/.test(prenom)) return setIsError(true)
+    if (!/\S+@\S+\.\S+/.test(email)) return setIsError(true)
+    if (!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(password)) return setIsError(true)
+    if (password !== Cpassword) return setIsError(true)
+    setloading(true) 
     try {
       const formdata = new FormData();
       formdata.append("email", email);
@@ -81,15 +69,7 @@ function Register() {
       loginCardinalty(res.data.token,res.data.user)
     } catch (error) {
       console.log(error)
-      if(error.response && error.response.data && error.response.data.email)
-        return setFieldErrors({
-          nom: "",
-          prenom: "",
-          password: "",
-          Cpassword: "",
-          email: error.response.data.message
-        })
-      else if (error.response && error.response.data && error.response.data.message)  setError(error.response.data.message)
+      if (error.response && error.response.data && error.response.data.message)  setError(error.response.data.message)
       else setError("Verifier connexion internet")
     }
     setloading(false)
@@ -127,26 +107,31 @@ function Register() {
         </div>
         <div className='grid lg:grid-cols-2 lg:gap-4 lg:space-y-0 space-y-4'>
           <div>
-            <Input placeholder={'Othmane'} ErrorIs={fieldErrors.nom} text={'Nom'} type="text" setFieald={setNom}/>
-            {fieldErrors.nom && <span className="text-[10px] text-red-500">* {fieldErrors.nom}</span>}
+            <Input placeholder={'Othmane'} ErrorIs={!nom?0:!/^[a-zA-Z]{3,}/.test(nom)?1:0} text={'Nom'} type="text" setFieald={setNom}/>
+            {/* {nomError && <span className="text-[10px] text-red-500">* {nomError}</span>} */}
+            {nom && !/^[a-zA-Z]{3,}/.test(nom)?<span className="text-[10px] text-red-500">* Veuillez entrer un nom valide contenant au moins trois lettres alphabétiques</span>:''}
           </div>
           <div>
-            <Input placeholder={'Elkhiari'} ErrorIs={fieldErrors.prenom} text={'Prenom'} type="text" setFieald={setPrenom}/>
-            {fieldErrors.prenom && <span className="text-[10px] text-red-500">* {fieldErrors.prenom}</span>}
+            <Input placeholder={'Elkhiari'} ErrorIs={!prenom?0:!/^[a-zA-Z]{3,}/.test(prenom)?1:0} text={'Prenom'} type="text" setFieald={setPrenom}/>
+            {/* {prenomError && <span className="text-[10px] text-red-500">* {prenomError}</span>} */}
+            {prenom && !/^[a-zA-Z]{3,}/.test(prenom)?<span className="text-[10px] text-red-500">* Veuillez entrer un prénom valide contenant au moins trois lettres alphabétiques</span>:''}
           </div>
         </div>
 
         <div>
-          <Input placeholder={'Othmane@domain.com'} ErrorIs={fieldErrors.email} text={'Email'} type="email" setFieald={setEmail}/>
-          {fieldErrors.email && <span className="text-[10px] text-red-500">* {fieldErrors.email}</span>}
+          <Input placeholder={'Othmane@domain.com'} ErrorIs={!email?0:!/\S+@\S+\.\S+/.test(email)?1:0} text={'Email'} type="email" setFieald={setEmail}/>
+          {/* {emailError && <span className="text-[10px] text-red-500">* {emailError}</span>} */}
+          {email && !/\S+@\S+\.\S+/.test(email)?<span className="text-[10px] text-red-500">* Veuillez entrer un email valide</span>:''}
         </div>
         <div>
-        <Input placeholder={'•••••••••••'} ErrorIs={fieldErrors.password} text={'Mote de passe'} type="password" setFieald={setPassword}/>
-          {fieldErrors.password && <span className="text-[10px] text-red-500">* {fieldErrors.password}</span>}
+        <Input placeholder={'•••••••••••'} ErrorIs={!password?0:!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(password)?1:0} text={'Mote de passe'} type="password" setFieald={setPassword}/>
+          {/* {passwordError && <span className="text-[10px] text-red-500">* {passwordError}</span>} */}
+          {password && !/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(password)?<span className="text-[10px] text-red-500">* Veuillez entrer un mot de passe valide contenant au moins 8 caractères, une lettre majuscule, une lettre minuscule et un chiffre</span>:''}
         </div>
         <div>
-        <Input placeholder={'•••••••••••'} ErrorIs={fieldErrors.Cpassword} text={'Confirmer mot de passe'} type="password" setFieald={setCpassword}/>
-        {fieldErrors.Cpassword && <span className="text-[10px] text-red-500">* {fieldErrors.Cpassword}</span>}
+        <Input placeholder={'••••••••••'} ErrorIs={!Cpassword?0:password !== Cpassword?1:0} text={'Confirmer mot de passe'} type="password" setFieald={setCpassword}/>
+        {/* {CpasswordError && <span className="text-[10px] text-red-500">* {CpasswordError}</span>} */}
+        {Cpassword && password !== Cpassword?<span className="text-[10px] text-red-500">* Les mots de passe ne correspondent pas</span>:''}
         </div>
         <Link to={"/login"} className='font-medium text-blue-600 dark:text-blue-500 hover:underline' >
           Vous avez déjà un compte ?
