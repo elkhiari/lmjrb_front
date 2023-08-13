@@ -1,7 +1,11 @@
 import React from 'react'
 import Search from '../components/search'
+import { useEffect } from 'react'
 
 function Home() {
+  useEffect(()=>{
+    document.title = 'Acceuil | Lmjrb'
+  },[])
   return (
     <div>
       <Search />

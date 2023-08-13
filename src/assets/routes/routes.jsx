@@ -13,15 +13,8 @@ import { useEffect } from 'react'
 function Routing() {
   const {user,role,token,loading} = useContext(AuthContext)
   const location = useLocation()
-  const [title,setTitle] = useState(location.pathname)
 
-  useEffect(()=>{
-    setTitle(location.pathname)
-  },[location])
 
-  useEffect(()=>{
-    document.title = title.charAt(0) == '/' ? title.charAt(1).toUpperCase() + title.slice(2) + " | " + "Lmjrb" : title + " | " + "Lmjrb"
-  },[user,role])
   
   return (
     <div>

@@ -21,6 +21,7 @@ function Login() {
 
   useEffect(()=>{
     if(urlParams.get('code')) setCode(urlParams.get('code'))
+    document.title = "Se connecter | Lmjrb"
   },[])
 
   const HandleLogin = async(e)=>{
@@ -55,24 +56,17 @@ function Login() {
   return (
     <div className='w-full'>
       <div className='relative'>
-        {/* <div className='h-32 -top-24 w-full absolute bg-green-600' ></div> */}
-      <form className=" mx-auto  shadow-green  space-y-4 container  bg-white backdrop-blur-sm flex flex-col place-content-center w-full max-w-lg rounded-xl p-6 sm:shadow-[0_40px_80px_rgba(255,59,48,0.1)] md:p-12" onSubmit={HandleLogin}>
+      <form className=" mx-auto mt-8 mb-8 md:mb-4 md:mt-4  shadow-green  space-y-4 container  bg-white backdrop-blur-sm flex flex-col place-content-center w-full max-w-lg rounded-xl p-6 sm:shadow-[0_40px_80px_rgba(255,59,48,0.1)] md:p-12" onSubmit={HandleLogin}>
         <h1 className='text-2xl font-black md:text-3xl text-center'>Se connecter à <span className='text-[#20B37C]'>Lmjrb</span></h1>
         <ButtonGoogle setCode={setCode} usingFor={"login"} Title={"Connectez-vous"}/>
-        <div className='text-center ort relative '>
+        <div className='text-center ort relative font-bold '>
           Ou
         </div>
         <Input placeholder={'Othmane@domain.com'} text={'Email'} type="email" setFieald={setEmail}/>
         <Input placeholder={'•••••••••••'} text={'Mote de passe'} type="password" setFieald={setPassword}/>
-        <div className='inline-block'>
           <Link to={"/rest-password"} className='font-medium text-blue-600 bg-red' >
             Mote de passe oublié ?
           </Link> 
-          <Link to={"/register"} className='text-sm text-black underline hover:font-bold duration-150' >
-            Je n'ai pas de compte ?
-          </Link>
-        </div>
-        
         {error && <Alert error={error} setError={setError} />}
         <Button OnCLick={HandleLogin} Title={"Connectez-vous"}/>
       </form>

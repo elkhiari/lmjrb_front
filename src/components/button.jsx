@@ -1,6 +1,5 @@
 import React from 'react'
-import { IoLogIn } from 'react-icons/io5'
-import {AiOutlineUserAdd} from 'react-icons/ai'
+
 
 function Button({OnCLick,Title}) {
   return (

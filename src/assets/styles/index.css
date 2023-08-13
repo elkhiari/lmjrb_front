@@ -54,7 +54,6 @@ body{
   padding: 0 20px; 
   font-size: 16px; 
   line-height: 1.5;
-  color: #333;
 }
 .ort::after ,
 .ort::before{
@@ -63,8 +62,7 @@ body{
   height: 2px;
   position: absolute;
   top: 50%;
-  /* background-color: #292d33;  */
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  background: #cfcfcf;
 
 }
 .ort::before{
@@ -76,15 +74,20 @@ body{
   /* transform: translateX(100%); */
 }
 
-@keyframes slide {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(5px);
-      }
-    }
 
-    .animate-slide {
-      animation: slide 300ms infinite alternate;
-    }
+/* animation when hover link  */
+
+.list::after{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #20B37C;
+  transition: all 0.5s;
+}
+
+.list:hover::after{
+  width: 100%;
+}
