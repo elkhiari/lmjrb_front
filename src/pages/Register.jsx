@@ -93,7 +93,7 @@ function Register() {
   return (
     <div className=''>
       <form className=" mx-auto mt-8 mb-8 md:mb-4 md:mt-4   space-y-4 container  bg-white backdrop-blur-sm flex flex-col place-content-center w-full max-w-2xl rounded-xl p-6 sm:shadow-[0_40px_80px_rgba(255,59,48,0.1)] md:p-12" onSubmit={HandleRegister}>
-        <h1 className='text-2xl font-black md:text-3xl text-center'>S'nscription à <span className='text-[#20B37C]'>Lmjrb</span></h1>  
+        <h1 className='text-2xl font-black md:text-3xl text-center'>S'inscription à <span className='text-[#20B37C]'>Lmjrb</span></h1>  
         <ButtonGoogle setCode={setCode} usingFor={"register"} Title={"Inscrivez-vous"}/>
         <div className='text-center ort relative'>
           Ou
@@ -108,40 +108,28 @@ function Register() {
         <div className='grid lg:grid-cols-2 lg:gap-4 lg:space-y-0 space-y-4'>
           <div>
             <Input placeholder={'Othmane'} ErrorIs={!nom?0:!/^[a-zA-Z]{3,}/.test(nom)?1:0} text={'Nom'} type="text" setFieald={setNom}/>
-            {/* {nomError && <span className="text-[10px] text-red-500">* {nomError}</span>} */}
-            {nom && !/^[a-zA-Z]{3,}/.test(nom)?<span className="text-[10px] text-red-500">* Veuillez entrer un nom valide contenant au moins trois lettres alphabétiques</span>:''}
+            {nom && !/^[a-zA-Z]{3,}/.test(nom)?<span className="text-[10px] text-red-500">* Nom doit avoir au moins 3 lettres.</span>:''}
           </div>
           <div>
             <Input placeholder={'Elkhiari'} ErrorIs={!prenom?0:!/^[a-zA-Z]{3,}/.test(prenom)?1:0} text={'Prenom'} type="text" setFieald={setPrenom}/>
-            {/* {prenomError && <span className="text-[10px] text-red-500">* {prenomError}</span>} */}
-            {prenom && !/^[a-zA-Z]{3,}/.test(prenom)?<span className="text-[10px] text-red-500">* Veuillez entrer un prénom valide contenant au moins trois lettres alphabétiques</span>:''}
+            {prenom && !/^[a-zA-Z]{3,}/.test(prenom)?<span className="text-[10px] text-red-500">* Prénom doit avoir au moins 3 lettres.</span>:''}
           </div>
         </div>
-
         <div>
           <Input placeholder={'Othmane@domain.com'} ErrorIs={!email?0:!/\S+@\S+\.\S+/.test(email)?1:0} text={'Email'} type="email" setFieald={setEmail}/>
-          {/* {emailError && <span className="text-[10px] text-red-500">* {emailError}</span>} */}
           {email && !/\S+@\S+\.\S+/.test(email)?<span className="text-[10px] text-red-500">* Veuillez entrer un email valide</span>:''}
         </div>
         <div>
-        <Input placeholder={'•••••••••••'} ErrorIs={!password?0:!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(password)?1:0} text={'Mote de passe'} type="password" setFieald={setPassword}/>
-          {/* {passwordError && <span className="text-[10px] text-red-500">* {passwordError}</span>} */}
-          {password && !/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(password)?<span className="text-[10px] text-red-500">* Veuillez entrer un mot de passe valide contenant au moins 8 caractères, une lettre majuscule, une lettre minuscule et un chiffre</span>:''}
+          <Input placeholder={'•••••••••••'} ErrorIs={!password?0:!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(password)?1:0} text={'Mote de passe'} type="password" setFieald={setPassword}/>
+          {password && !/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(password)?<span className="text-[10px] text-red-500">* Le mot de passe doit avoir 8 caractères avec majuscule, minuscule et chiffre.</span>:''}
         </div>
         <div>
         <Input placeholder={'••••••••••'} ErrorIs={!Cpassword?0:password !== Cpassword?1:0} text={'Confirmer mot de passe'} type="password" setFieald={setCpassword}/>
-        {/* {CpasswordError && <span className="text-[10px] text-red-500">* {CpasswordError}</span>} */}
         {Cpassword && password !== Cpassword?<span className="text-[10px] text-red-500">* Les mots de passe ne correspondent pas</span>:''}
         </div>
-        <Link to={"/login"} className='font-medium text-blue-600 dark:text-blue-500 hover:underline' >
-          Vous avez déjà un compte ?
-        </Link>
         {error && <Alert error={error} setError={setError} />}
         <Button OnCLick={HandleRegister} Title={"Inscrivez-vous"} />
       </form>
-      {/* <div className="img hidden md:w-1/2  md:flex flex-col place-items-center place-content-center">
-        <img src={require('../assets/media/cr0.png')} className='w-2/3' />
-      </div> */}
     </div>
   )
 }
