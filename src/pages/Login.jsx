@@ -56,7 +56,7 @@ function Login() {
     <div className='w-full'>
       <div className='relative'>
         {/* <div className='h-32 -top-24 w-full absolute bg-green-600' ></div> */}
-      <form className=" mx-auto  shadow-green  space-y-4 container  bg-white backdrop-blur-sm flex flex-col place-content-center w-full max-w-lg rounded-xl p-6 shadow-[0_40px_80px_rgba(255,59,48,0.1)] md:p-12" onSubmit={HandleLogin}>
+      <form className=" mx-auto  shadow-green  space-y-4 container  bg-white backdrop-blur-sm flex flex-col place-content-center w-full max-w-lg rounded-xl p-6 sm:shadow-[0_40px_80px_rgba(255,59,48,0.1)] md:p-12" onSubmit={HandleLogin}>
         <h1 className='text-2xl font-black md:text-3xl text-center'>Se connecter à <span className='text-[#20B37C]'>Lmjrb</span></h1>
         <ButtonGoogle setCode={setCode} usingFor={"login"} Title={"Connectez-vous"}/>
         <div className='text-center ort relative '>
