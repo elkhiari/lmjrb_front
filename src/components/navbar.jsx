@@ -44,7 +44,7 @@ function Navbar() {
           <img src={require('../assets/media/logo_v2.png')} alt='logo' className='w-20 h-20  duration-150 rounded group-hover:bg-black group-hover:opacity-50 ' />
           </Link>
           <ul 
-            className={`md:flex pt-20 md:pt-0 md:space-x-20 place-items-center  md:flex-row md:space-y-0 space-y-4 absolute md:relative  right-0 bg-white md:bg-transparent   md:right-0 md:place-items-center  md:py-0 py-4 md:px-0 px-20 duration-500 md:shadow-none shadow-xl md:rounded-none rounded-b-3xl md:items-center md:justify-between w-full md:w-auto -z-10 ${navActive?"top-14":"-top-80"} md:top-0 md:z-0`}
+            className={`md:flex pt-20 md:pt-0 md:space-x-20 place-items-center  md:flex-row md:space-y-0 space-y-4 absolute md:relative  right-0 bg-white md:bg-transparent   md:right-0 md:place-items-center  md:py-0 py-4 md:px-0 px-10 duration-500 md:shadow-none shadow-xl md:rounded-none rounded-b-3xl md:items-center md:justify-between w-full md:w-auto -z-10 ${navActive?"top-14":"-top-80"} md:top-0 md:z-0`}
           >
             <li className='list relative flex'>
               <Link to={"/"} onClick={handleClick} className='text-black w-full font-bold   hover:text-[#20B37C] duration-150'>Accueil</Link>
@@ -52,11 +52,11 @@ function Navbar() {
             <li className='list relative flex'>
               <Link to={"/about"} onClick={handleClick} className='text-black  font-bold w-full  hover:text-[#20B37C] duration-150'>A propos</Link>
             </li>
-            {!token && <li className='flex space-x-3 '>
-            {location.pathname != '/login' && <Link to={"login"} onClick={handleClick} className='bg-[#20B37C]  hover:bg-white shadow-2xl shadow-[#20B37C]   border-[#20B37C] relative py-2 px-5  w-[150px] hover:shadow-xl border-2  text-sm rounded text-white hover:text-[#20B37C] font-bold duration-300  outline-none flex place-content-center place-items-center'>
+            {!token && <li className='flex space-x-3 place-content-center '>
+            {location.pathname != '/login' && <Link to={"login"} onClick={handleClick} className='bg-[#20B37C]  hover:bg-white shadow-2xl shadow-[#20B37C]   border-[#20B37C] relative py-2 px-5 min-w-[120px]  md:min-w-[150px]  hover:shadow-xl border-2  text-sm rounded text-white hover:text-[#20B37C] font-bold duration-300  outline-none flex place-content-center place-items-center'>
                 Se connecter
                 </Link>}
-              {location.pathname != '/register' && <Link to={"register"} onClick={handleClick} className='bg-[#20B37C] hover:bg-white shadow-2xl shadow-[#20B37C]   border-[#20B37C] relative py-2 px-5 w-[150px] hover:shadow-xl border-2  text-sm rounded text-white hover:text-[#20B37C] font-bold duration-300  outline-none flex place-content-center place-items-center'>
+              {location.pathname != '/register' && <Link to={"register"} onClick={handleClick} className='bg-[#20B37C] hover:bg-white shadow-2xl shadow-[#20B37C]   border-[#20B37C] relative py-2 px-5 min-w-[120px] md:min-w-[150px] hover:shadow-xl border-2  text-sm rounded text-white hover:text-[#20B37C] font-bold duration-300  outline-none flex place-content-center place-items-center'>
                 S'inscrire
                 </Link> }
             </li> }
