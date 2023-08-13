@@ -39,12 +39,9 @@ function Navbar() {
   }, []);
   return (
     <>
-      <div className={`w-full  z-40 relative flex px-20 justify-between place-items-center  duration-150  py-4  bg-white rounded-b-3xl `}>
+      <div className={`w-full  z-40 relative flex px-5 md:px-20 justify-between place-items-center  duration-150  py-4  bg-white rounded-b-3xl `}>
         <Link to={"/"} className='flex space-x-2 place-items-center group duration-150 cursor-pointer'>
           <img src={require('../assets/media/logo_v2.png')} alt='logo' className='w-20 h-20  duration-150 rounded group-hover:bg-black group-hover:opacity-50 ' />
-            {/* <span className='font-extrabold text-black text-2xl  tracking-tighter duration-150 relative group-hover:opacity-50'>
-              Lmjrb <span className='text-3xl absolute -right-4 top-0'>*</span>
-            </span> */}
           </Link>
           <ul 
             className={`md:flex pt-20 md:pt-0 md:space-x-20 place-items-center  md:flex-row md:space-y-0 space-y-4 absolute md:relative  right-0 bg-white md:bg-transparent   md:right-0 md:place-items-center  md:py-0 py-4 md:px-0 px-20 duration-500 md:shadow-none shadow-xl md:rounded-none rounded-b-3xl md:items-center md:justify-between w-full md:w-auto -z-10 ${navActive?"top-14":"-top-80"} md:top-0 md:z-0`}
@@ -63,11 +60,6 @@ function Navbar() {
                 S'inscrire
                 </Link> }
             </li> }
-            {/* <li className='
-              hidden md:flex
-            '>
-              {token && user && <UserDropd user={user} logout={logout} />}
-            </li> */}
           </ul>
           {
             token && user && 
