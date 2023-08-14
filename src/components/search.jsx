@@ -70,8 +70,6 @@ function Search() {
 
   return (
     <div className='w-full   flex flex-col justify-center items-center py-5 '>
-    {/* <div className='absolute top-0 left-0 w-full bg-cover  min-h-full  -z-50 backdrop-blur-sm brightness-90 bg-gradient-to-t from-white/200 '  style={{backgroundImage:'url("https://images.pexels.com/photos/3376799/pexels-photo-3376799.jpeg")' ,backgroundSize:'cover'}}></div>
-    <div className='absolute top-0 left-0 w-full bg-cover  min-h-full  -z-40 bg-gradient-to-t from-white '></div> */}
       <div className='w-full flex flex-col justify-center items-center container  mx-auto  mt-20  px-5 py-2'>
         <div className='w-full flex'>
           <span className='text-2xl md:text-4xl text-center md:text-left font-extrabold'>
@@ -81,9 +79,9 @@ function Search() {
           </div>
         </div>
         <div className='w-full flex container mt-10 relative'>
-          <div className='absolute top-10 left-1/4 h-14 w-1/2 bg-[#20B37C] shadow-lg -z-50'></div>
-          <div className='bg-white/40 backdrop-blur-sm shadow-md  w-full min-h-[200px] rounded-md px-6 py-6 place-content-center mx-auto flex flex-col relative'>
-              <h1 className='mb-4 text-xl  font-extrabold text-gray-900 dark:text-white '>
+          <div className='absolute top-10  left-0 h-1/2 w-full md:w-1/2 bg-[#20B37C] shadow-[0_40px_80px_rgba(255,59,48,0.1)] -z-50'></div>
+          <div className=' bg-gradient-to-br from-white/60 from-[11.97%] to-white/30 to-[63.37%] p-6 text-gray-900 shadow-[0_20px_40px_rgba(255,69,58,0.05)] backdrop-blur-3xl  w-full min-h-[200px] rounded-md px-6 py-6 place-content-center mx-auto flex flex-col relative'>
+              <h1 className='mb-4 text-xl  font-extrabold text-gray-900 '>
                 Accéder à des services <span className='text-[#20B37C]'> médicaux experts</span>
               </h1>
               <div className="relative  space-y-4 ">
@@ -94,7 +92,7 @@ function Search() {
                   onChange={(e) => setSpeciality(e.target.value)}
                   value={speciality}
                   onBlur={() => setWhofocus('')}
-                  className="block p-4 w-full z-20 text-sm text-gray-900 bg-white/70 duration-150 rounded shadow focus:rounded-b-none focus:bg-white hover:shadow-lg focus:shadow-lg outline-none"
+                  className="block border border-gray-200 p-4 w-full z-20 text-sm text-gray-900 bg-white/70 duration-150 rounded focus:rounded-b-none focus:bg-white hover:shadow-lg focus:shadow-lg outline-none"
                   placeholder="Recherche de spécialité médicale..."
                   required
                 />
@@ -109,7 +107,7 @@ function Search() {
                               .map((item, index) => (
                                 <li
                                   key={index}
-                                  className="hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer py-2 px-4"
+                                  className="hover:bg-gray-100 hover:px-7 duration-300 dark:hover:bg-gray-600 cursor-pointer py-2 px-4"
                                   onMouseDown={() => setSpeciality(item.name)}
                                 >
                                   {item.name}
@@ -125,7 +123,7 @@ function Search() {
                         onChange={(e) => setVille(e.target.value)}
                         value={ville}
                         onBlur={() => setWhofocus('')}
-                        className="block p-4 w-full z-20 text-sm text-gray-900 bg-white/70 duration-150 rounded shadow focus:rounded-b-none focus:bg-white hover:shadow-lg focus:shadow-lg outline-none"
+                        className="block border border-gray-200 p-4 w-full z-20 text-sm text-gray-900 bg-white/70 duration-150 rounded  focus:rounded-b-none focus:bg-white hover:shadow-lg focus:shadow-lg outline-none"
                         placeholder="Recherche de spécialité médicale..."
                         required
                       />
@@ -140,7 +138,7 @@ function Search() {
                             .map((item, index) => (
                               <li
                                 key={index}
-                                className="hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer py-2 px-4"
+                                className="hover:bg-gray-100  hover:px-7 duration-300 dark:hover:bg-gray-600 cursor-pointer py-2 px-4"
                                 onMouseDown={() => setVille(item.name)}
                               >
                                 {item.name}
