@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { FiLogIn } from 'react-icons/fi'
+import { BiSearchAlt } from 'react-icons/bi'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
@@ -70,7 +70,7 @@ function Search() {
 
   return (
     <div className='w-full   flex flex-col justify-center items-center py-5 '>
-      <div className='w-full flex flex-col justify-center items-center container  mx-auto  mt-20  px-5 py-2'>
+      <div className='w-full flex flex-col justify-center items-center container  mx-auto  mt-10  px-5 py-2'>
         <div className='w-full flex'>
           <span className='text-2xl md:text-4xl text-center md:text-left font-extrabold'>
             <span className="text-[#20B37C]">{firstthreewords}</span> {restofwords}
@@ -147,9 +147,16 @@ function Search() {
                       </ul>
               </div>
             </div>
+            <Link to={`/search?speciality=${speciality}&ville=${ville}`} className='w-full flex justify-center items-center mt-4'>
+              <button className='bg-[#20B37C] relative border flex justify-center items-center border-[#20B37C] text-white hover:bg-transparent hover:text-[#20B37C]  w-full px-4 py-2 rounded-md  transition-all duration-300'>
+                Rechercher
+                <BiSearchAlt className='absolute right-4 ' />
+              </button>
+            </Link>
+
           </div>
           <div className=' w-full hidden lg:block'>
-                          
+            <img src={require('../assets/media/doctor/pngwing.com.png')} alt='doctor' className='w-full' />
           </div>
         </div>
       </div>
