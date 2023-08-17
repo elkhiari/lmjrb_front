@@ -46,7 +46,6 @@ function Search() {
     axios.get(process.env.REACT_APP_API_URL + '/speciality')
       .then((response) => {
         setSpecialityData(response.data);
-        console.log(response.data);
       })
       .catch((error) => {
         console.error('Error fetching location data:', error);
@@ -56,7 +55,6 @@ function Search() {
     axios.get(process.env.REACT_APP_API_URL + '/ville')
       .then((response) => {
         setVileData(response.data);
-        console.log(response.data);
       })
       .catch((error) => {
         console.error('Error fetching location data:', error);
@@ -71,15 +69,21 @@ function Search() {
   return (
     <div className='w-full   flex flex-col justify-center items-center py-5 '>
       <div className='w-full flex flex-col justify-center items-center container  mx-auto  mt-10  px-5 py-2'>
-        <div className='w-full flex'>
+        {/* <div className='w-full flex'>
           <span className='text-2xl md:text-4xl text-center md:text-left font-extrabold'>
             <span className="text-[#20B37C]">{firstthreewords}</span> {restofwords}
           </span>
           <div className='w-full md:flex hidden justify-center items-center'>
           </div>
-        </div>
-        <div className='w-full flex container mt-10 relative'>
-          <div className='absolute top-10  left-0 h-1/2 w-full md:w-1/2 bg-[#20B37C] shadow-[0_40px_80px_rgba(255,59,48,0.1)] -z-50'></div>
+        </div> */}
+        <div className='w-full md:flex space-y-2 md:space-y-0 container mt-10 relative'>
+          <div className=' w-full '>
+            {/* <img src={require('../assets/media/doctor/pngwing.com.png')} alt='doctor' className='w-full' /> */}
+            <span className='text-2xl md:text-4xl  md:text-left font-extrabold'>
+            <span className="text-[#20B37C]">{firstthreewords}</span> {restofwords}
+          </span>
+          </div>
+          <div className='absolute bottom-20  md:right-2 h-1/2 w-full md:w-1/2 bg-[#20B37C] shadow-[0_40px_80px_rgba(255,59,48,0.1)] -z-50'></div>
           <div className=' bg-gradient-to-br from-white/60 from-[11.97%] to-white/30 to-[63.37%] p-6 text-gray-900 shadow-[0_20px_40px_rgba(255,69,58,0.05)] backdrop-blur-3xl  w-full min-h-[200px] rounded-md px-6 py-6 place-content-center mx-auto flex flex-col relative'>
               <h1 className='mb-4 text-xl  font-extrabold text-gray-900 '>
                 Accéder à des services <span className='text-[#20B37C]'> médicaux experts</span>
@@ -155,9 +159,7 @@ function Search() {
             </Link>
 
           </div>
-          <div className=' w-full hidden lg:block'>
-            <img src={require('../assets/media/doctor/pngwing.com.png')} alt='doctor' className='w-full' />
-          </div>
+          
         </div>
       </div>
     </div>
