@@ -10,9 +10,9 @@ import Button from '../../components/button'
 function ProfileSettings() {
     const {token,tokenIsValid} = useContext(AuthContext)
     const {user} = useContext(AuthContext)
-    const [nom, setNom] = useState('')
-    const [prenom, setPrenom] = useState('')
-    const [telephone, setTelephone] = useState('')
+    const [nom, setNom] = useState(user.lastName)
+    const [prenom, setPrenom] = useState(user.firstName)
+    const [telephone, setTelephone] = useState(user.phonenumber)
     const [error, setError] = useState('')
     const navigate = useNavigate()
 
