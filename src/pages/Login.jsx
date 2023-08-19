@@ -62,8 +62,8 @@ function Login() {
         <div className='text-center ort relative font-bold '>
           Ou
         </div>
-        <Input placeholder={'Othmane@domain.com'} text={'Email'} type="email" setFieald={setEmail}/>
-        <Input placeholder={'•••••••••••'} text={'Mote de passe'} type="password" setFieald={setPassword}/>
+        <Input placeholder={'Othmane@domain.com'} text={'Email'} type="email" required={true} setFieald={setEmail}/>
+        <Input placeholder={'•••••••••••'} text={'Mote de passe'} type="password" required={true} setFieald={setPassword}/>
           <Link to={"/rest-password"} className='font-medium text-blue-600 bg-red' >
             Mote de passe oublié ?
           </Link> 

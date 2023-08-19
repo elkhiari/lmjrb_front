@@ -1,14 +1,36 @@
 import React from 'react'
 import { useEffect } from 'react'
+import { useRef } from 'react'
 import { useState } from 'react'
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 
 function UserDropd({user,logout}) {
     const [isDroped,setIsDroped] = useState(false)
+    const dropdownRef = useRef(null);
+
+    const handleClick = () => {
+        logout()
+        setIsDroped(!isDroped);
+    };
+
+    useEffect(() => {
+        const pageClickEvent = (e) => {
+            if (dropdownRef.current !== null && !dropdownRef.current.contains(e.target)) {
+                setIsDroped(!isDroped)
+            }
+        };
+        if (isDroped) {
+            window.addEventListener('click', pageClickEvent);
+        }
+        return () => {
+            window.removeEventListener('click', pageClickEvent);
+        }
+    }, [isDroped]);
+
 
   return (
-    <div className='relative'>          
+    <div className='relative' ref={dropdownRef}>          
         <button onClick={()=>setIsDroped(!isDroped)} className="flex text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" type="button">
             <span className="sr-only">Open user menu</span>
             <img className="w-8 h-8 rounded-full object-cover" src={user.google ?  user.profile : process.env.REACT_APP_API_URL + user.profile} alt="user photo" />
@@ -22,15 +44,15 @@ function UserDropd({user,logout}) {
             </div>
             <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" >
             <li>
-                <Link to="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</Link>
+                <Link to="#" onClick={()=>setIsDroped(!isDroped)} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</Link>
             </li>
             <li>
-                <Link to="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</Link>
+                <Link to="/settings" onClick={()=>setIsDroped(!isDroped)} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Paramètres</Link>
             </li>
             
             </ul>
             <div className="py-2">
-            <button onClick={logout} to="#" className="block px-4 py-2 w-full text-left text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</button>
+            <button onClick={handleClick} to="#"  className="block px-4 py-2 w-full text-left text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Se déconnecter</button>
             </div>
         </div>
     </div>

@@ -107,24 +107,24 @@ function Register() {
         </div>
         <div className='grid lg:grid-cols-2 lg:gap-4 lg:space-y-0 space-y-4'>
           <div>
-            <Input placeholder={'Othmane'} ErrorIs={!nom?0:!/^[a-zA-Z]{3,}/.test(nom)?1:0} text={'Nom'} type="text" setFieald={setNom}/>
+            <Input placeholder={'Othmane'} ErrorIs={!nom?0:!/^[a-zA-Z]{3,}/.test(nom)?1:0} text={'Nom'} type="text" required={true} setFieald={setNom}/>
             {nom && !/^[a-zA-Z]{3,}/.test(nom)?<span className="text-[10px] text-red-500">* Nom doit avoir au moins 3 lettres.</span>:''}
           </div>
           <div>
-            <Input placeholder={'Elkhiari'} ErrorIs={!prenom?0:!/^[a-zA-Z]{3,}/.test(prenom)?1:0} text={'Prenom'} type="text" setFieald={setPrenom}/>
+            <Input placeholder={'Elkhiari'} ErrorIs={!prenom?0:!/^[a-zA-Z]{3,}/.test(prenom)?1:0} text={'Prenom'} type="text" required={true} setFieald={setPrenom}/>
             {prenom && !/^[a-zA-Z]{3,}/.test(prenom)?<span className="text-[10px] text-red-500">* Prénom doit avoir au moins 3 lettres.</span>:''}
           </div>
         </div>
         <div>
-          <Input placeholder={'Othmane@domain.com'} ErrorIs={!email?0:!/\S+@\S+\.\S+/.test(email)?1:0} text={'Email'} type="email" setFieald={setEmail}/>
+          <Input placeholder={'Othmane@domain.com'} ErrorIs={!email?0:!/\S+@\S+\.\S+/.test(email)?1:0} text={'Email'} type="email" required={true} setFieald={setEmail}/>
           {email && !/\S+@\S+\.\S+/.test(email)?<span className="text-[10px] text-red-500">* Veuillez entrer un email valide</span>:''}
         </div>
         <div>
-          <Input placeholder={'•••••••••••'} ErrorIs={!password?0:!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(password)?1:0} text={'Mote de passe'} type="password" setFieald={setPassword}/>
+          <Input placeholder={'•••••••••••'} ErrorIs={!password?0:!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(password)?1:0} text={'Mote de passe'} type="password" required={true} setFieald={setPassword}/>
           {password && !/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(password)?<span className="text-[10px] text-red-500">* Le mot de passe doit avoir 8 caractères avec majuscule, minuscule et chiffre.</span>:''}
         </div>
         <div>
-        <Input placeholder={'••••••••••'} ErrorIs={!Cpassword?0:password !== Cpassword?1:0} text={'Confirmer mot de passe'} type="password" setFieald={setCpassword}/>
+        <Input placeholder={'••••••••••'} ErrorIs={!Cpassword?0:password !== Cpassword?1:0} text={'Confirmer mot de passe'} type="password" required={true} setFieald={setCpassword}/>
         {Cpassword && password !== Cpassword?<span className="text-[10px] text-red-500">* Les mots de passe ne correspondent pas</span>:''}
         </div>
         {error && <Alert error={error} setError={setError} />}

@@ -7,14 +7,12 @@ import NotFound from '../../pages/NotFound'
 import Navbar from '../../components/navbar'
 import { AuthContext } from '../../contexts/AuthContext'
 import Loading from '../../pages/loading'
-import { useState } from 'react'
-import { useEffect } from 'react'
+import Dashboard from '../../pages/dashboard/dashboard'
+import Settings from '../../pages/settings/settings'
+import ProfileSettings from '../../pages/settings/profileSettings'
 
 function Routing() {
   const {user,role,token,loading} = useContext(AuthContext)
-  const location = useLocation()
-
-
   
   return (
     <div>
@@ -25,6 +23,9 @@ function Routing() {
         <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/login' element={token?<Navigate to={"/"} />:<Login />} />
+            <Route path='/settings' element={!token?<Navigate to={"/"} />:<Settings />} >
+              <Route path='profile' element={<ProfileSettings />} />
+            </Route>
             <Route path='/register' element={token?<Navigate to={"/"} />:<Register />} />
             <Route path='*' element={<NotFound />} />
         </Routes>
