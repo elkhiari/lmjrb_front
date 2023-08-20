@@ -3,12 +3,14 @@ import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { IoArrowBackCircle } from 'react-icons/io5'
 import Input from '../../components/inputFieald'
 import axios from 'axios'
+import LoadingAnim from '../../components/loading'
 
 import { AuthContext } from '../../contexts/AuthContext'
 import Button from '../../components/button'
 
 function ProfileSettings() {
     const {token,tokenIsValid} = useContext(AuthContext)
+    const [loading,setLoading] = useState(false)
     const {user} = useContext(AuthContext)
     const [nom, setNom] = useState(user.lastName)
     const [prenom, setPrenom] = useState(user.firstName)
@@ -33,6 +35,7 @@ function ProfileSettings() {
         }
         
         setError('')
+        setLoading(true)
         try {
             const data  = {lastName:nom,firstName:prenom,phonenumber:telephone}
             const res = await axios.put(process.env.REACT_APP_API_URL + '/me',data,{headers: {Authorization: `Bearer ${token}`,},})
@@ -41,14 +44,16 @@ function ProfileSettings() {
         } catch (error) {
             alert("error")
         }
+        setLoading(false)
     }
 
 
 
 
   return (
-    <div className='flex flex-col w-full min-h-[100%]  p-2 mx-auto max-w-5xl'>
-        <Link to='/settings' className='w-full h-10 text-[#20B37C]  py-2'>
+    <div className='flex flex-col w-full min-h-[100%]  p-2 mx-auto max-w-5xl place-content-center place-items-center'>
+        {!loading ?<>
+        <Link to='/settings' className='w-full h-10 text-[#20B37C]  py-2 mb-5'>
             <IoArrowBackCircle className='text-2xl inline-block' />
             <span className=' text-sm font-bold ml-4'>Profil</span>
         </Link>
@@ -72,6 +77,9 @@ function ProfileSettings() {
             <Button Title='Enregistrer' type='submit' />
         </div>
         </form>
+        </>:<>
+            <LoadingAnim />
+        </>}
     </div>
   )
 }

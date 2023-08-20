@@ -43,7 +43,7 @@ function Navbar() {
     <>
       <div className={`w-full  z-40 relative flex px-5 md:px-20 justify-between place-items-center  duration-150  py-4  bg-white rounded-b-3xl `} >
         <Link to={"/"} className='flex space-x-2 place-items-center group duration-150 cursor-pointer'>
-          <img src={require('../assets/media/logo_v2.png')} alt='logo' className='md:w-20 md:h-20 w-10 h-10  duration-150 rounded group-hover:bg-black group-hover:opacity-50 ' />
+          <img src={require('../assets/media/logo_v2.png')} alt='logo' className='md:w-16 md:h-16 w-10 h-10  duration-150 rounded group-hover:bg-black group-hover:opacity-50 ' />
           </Link>
           <ul 
             className={`lg:flex pt-20 lg:pt-0 lg:space-x-20 place-items-center  lg:flex-row lg:space-y-0 space-y-4 absolute lg:relative  right-0 bg-white lg:bg-transparent   lg:right-0 lg:place-items-center  lg:py-0 py-4 lg:px-0 px-10 duration-500 lg:shadow-none shadow-xl lg:rounded-none rounded-b-3xl lg:items-center lg:justify-between w-full lg:w-auto -z-10 ${navActive?"top-14":"-top-80"} lg:top-0 lg:z-0`}
