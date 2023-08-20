@@ -28,7 +28,9 @@ function ProfileSettings() {
         if(!/^[a-zA-Z]{3,}/.test(prenom)){
             return
         }
-        // telephone i not required 
+        if(telephone && !/^(\+212[5-8])\d{8}$/.test(telephone)){
+            return
+        }
         
         setError('')
         try {
