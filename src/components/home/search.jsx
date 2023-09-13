@@ -4,7 +4,7 @@ import { BiSearchAlt } from 'react-icons/bi'
 import { IoIosArrowForward } from 'react-icons/io'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react';
-import { AuthContext } from '../contexts/AuthContext';
+import { AuthContext } from '../../contexts/AuthContext';
 
 
 
@@ -16,7 +16,7 @@ function Search() {
   const [speciality, setSpeciality] = useState('')
   const [specialityData, setSpecialityData] = useState();
   const [whofocus, setWhofocus] = useState();
-  const {loading} = useContext(AuthContext)
+  const {loading,token,user} = useContext(AuthContext)
   
   const qoutes = [ 
     "Mieux se sentir dans sa recherche de soins de santé : Trouvez le médecin idéal dès aujourd'hui !"
@@ -86,11 +86,10 @@ function Search() {
             </span>
           </div> 
          <div>
-         <Link to={'/register'} className='text-[#20B37C] text-left  w-auto  font-bold transition-all duration-300 inline-flex  place-items-center group'>
+         {!token && <Link to={'/register'} className='text-[#20B37C] text-left  w-auto  font-bold transition-all duration-300 inline-flex  place-items-center group'>
           Rejoignez la communauté
           <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" class="ml-24 group-hover:ml-32  duration-300  " height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"></path></svg>
-
-          </Link>
+          </Link>}
          </div>
           </div>
           <div className='absolute bottom-10 md:bottom-14  md:right-2 h-1/2 w-full md:w-1/2 bg-[#20B37C] shadow-[0_40px_80px_rgba(255,59,48,0.1)] -z-50'></div>

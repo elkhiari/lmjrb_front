@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Link, Outlet, Route, Routes, useLocation } from 'react-router-dom'
-import SettingsMenu from '../../components/settingsMenu'
+import SettingsMenu from '../../components/settings/settingsMenu'
 import { AuthContext } from '../../contexts/AuthContext'
 
 

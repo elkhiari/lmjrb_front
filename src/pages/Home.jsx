@@ -1,7 +1,7 @@
 import React from 'react'
-import Search from '../components/search'
+import Search from '../components/home/search'
 import { useEffect } from 'react'
-import Footer from '../components/footer'
+import Footer from '../components/global/footer'
 
 function Home() {
   useEffect(()=>{

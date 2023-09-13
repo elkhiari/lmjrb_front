@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import MenuLinks from './MenuLinks'
-import InfoMenu from './InfoMenu'
+import MenuLinks from '../MenuLinks'
+import InfoMenu from '../global/InfoMenu'
 
 
 function SettingsMenu({user}) {

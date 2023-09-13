@@ -6,7 +6,7 @@ function Footer() {
             <div class="flex w-[90%] max-w-[1300px] flex-col gap-12 md:gap-16 lg:flex-row">
                 <div class="flex flex-1 flex-col gap-6">
                     <figure>
-                        <img src={require('../assets/media/logo512.png')} className='w-24' alt="logo" />
+                        <img src={require('../../assets/media/logo512.png')} className='w-24' alt="logo" />
                 </figure>
                 <p class="text-lg leading-[30px]">12, Agdal à Rabat, Maroc</p>
                 </div>

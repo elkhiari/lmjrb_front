@@ -1,5 +1,5 @@
 import React from 'react'
-import LoadingAn from '../components/loading'
+import LoadingAn from '../components/global/loading'
 import { useEffect } from 'react'
 
 function Loading() {
