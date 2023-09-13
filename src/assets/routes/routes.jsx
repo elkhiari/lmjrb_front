@@ -10,6 +10,7 @@ import Loading from '../../pages/loading'
 import Dashboard from '../../pages/dashboard/dashboard'
 import Settings from '../../pages/settings/settings'
 import ProfileSettings from '../../pages/settings/profileSettings'
+import AccountSettings from '../../pages/settings/accountSettings'
 import SecuritySettings from '../../pages/settings/securitySettings'
 
 function Routing() {
@@ -27,6 +28,7 @@ function Routing() {
             <Route path='/settings' element={!token?<Navigate to={"/"} />:<Settings />} >
               <Route path='profile' element={<ProfileSettings />} />
               <Route path='security' element={<SecuritySettings />} />
+              <Route path='account' element={<AccountSettings />} />
             </Route>
             <Route path='/register' element={token?<Navigate to={"/"} />:<Register />} />
             <Route path='*' element={<NotFound />} />
