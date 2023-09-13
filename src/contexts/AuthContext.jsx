@@ -30,7 +30,6 @@ const AuthProvider = ({children})=>{
                 }
             })
             setUser(res.data)
-            console.log(res.data)
             setRole(res.data.role);
         } catch (error) {
            logout() 

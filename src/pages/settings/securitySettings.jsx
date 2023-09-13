@@ -32,11 +32,12 @@ function SecuritySettings() {
         }
         if(user.password && password === oldPassword) {
             setError("Désolé, vous ne pouvez pas réutiliser l'ancien mot de passe comme nouveau mot de passe. Veuillez en choisir un autre")
+            return
         }
         setError('')
         setLoading(true)
         try {
-            const data  = {password:oldPassword | null,newPassword:password}
+            const data  = {password:oldPassword,newPassword:password}
             const res = await axios.put(process.env.REACT_APP_API_URL + '/change_password',data,{headers: {Authorization: `Bearer ${token}`,},})
             tokenIsValid();
             console.log(res.data)
