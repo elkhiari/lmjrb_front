@@ -37,7 +37,7 @@ function SecuritySettings() {
         setLoading(true)
         try {
             const data  = {password:oldPassword | null,newPassword:password}
-            const res = await axios.put(process.env.REACT_APP_API_URL + 'change_password',data,{headers: {Authorization: `Bearer ${token}`,},})
+            const res = await axios.put(process.env.REACT_APP_API_URL + '/change_password',data,{headers: {Authorization: `Bearer ${token}`,},})
             tokenIsValid();
             console.log(res.data)
             navigate('/settings');
